@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 package-lock.json
+jeandimi-win32-x64

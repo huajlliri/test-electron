@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 
 let mainWindow;
@@ -22,22 +23,23 @@ function createWindow() {
     height: 600
   });
 
+  // Establece la ruta al archivo de la base de datos en la carpeta 'data'
+  const dbPath = path.join(app.getAppPath(), 'data', 'test.db');
+
   mainWindow.loadFile('src/index.html');
 
-  db = new sqlite3.Database('./src/test.db', (err) => {
+  db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
       console.error('Error al abrir la base de datos:', err.message);
     } else {
       console.log('Conexión exitosa a la base de datos SQLite');
 
-      // Realiza una consulta a la base de datos
       db.all('SELECT * FROM clientes', [], (err, rows) => {
         if (err) {
           console.error('Error en la consulta de clientes:', err.message);
         } else {
           const tableHtml = generateTableHtml(rows);
 
-          // Inserta la cadena HTML en el archivo index.html
           mainWindow.webContents.executeJavaScript(`
             document.getElementById('dataContainer').innerHTML = '${tableHtml}';
           `);

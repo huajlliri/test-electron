@@ -1,19 +1,24 @@
 {
   "name": "jeandimi-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/main.js",
+  "description": "esto es un test",
+  "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-packager . jeandimi --platform=win32 --arch=x64 --overwrite --data"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huajlliri/test-electron.git"
+  },
+  "author": "codigoveloz",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^27.0.1"
+    "electron": "^27.0.1",
+    "electron-packager": "^17.1.2"
   },
   "dependencies": {
-    "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
   }
 }
