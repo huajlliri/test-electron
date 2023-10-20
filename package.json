@@ -4,9 +4,31 @@
   "description": "esto es un test",
   "main": "main.js",
   "scripts": {
-    "dev": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "electron-packager . jeandimi --platform=win32 --arch=x64 --overwrite --data"
+    "start": "electron .",
+    "package-win": "electron-builder",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "test-app.id",
+    "productName": "test-app",
+    "directories": {
+      "output": "./dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "poro.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "poro.ico",
+      "uninstallerIcon": "poro.ico",
+      "uninstallDisplayName": "Desinstalar Mi Aplicación",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   },
   "repository": {
     "type": "git",
@@ -16,9 +38,11 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^27.0.1",
+    "electron-builder": "^24.6.4",
     "electron-packager": "^17.1.2"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "sqlite3": "^5.1.6"
   }
 }
