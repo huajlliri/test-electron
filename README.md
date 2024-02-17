@@ -11,7 +11,7 @@ npm run package
 ```
 
 
-// para volverlo un instalador
+ para volverlo un instalador
 // se debe de tener previamente instalado en el sitema operativo NSIS 
     https://nsis.sourceforge.io/Download
 
